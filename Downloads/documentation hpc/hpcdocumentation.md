@@ -1,18 +1,17 @@
-# 🚀 SDSU HPC SSH Setup Guide (For Undergraduate Students)
-
----
+# 🚀 SDSU HPC SSH Setup Guide (Undergraduate Students)
 
 ## 📘 1. Introduction
 
 This guide helps you connect to SDSU High Performance Computing (HPC) systems:
 
-- 🖥️ Innovator Cluster  
-- 🖥️ Discovery Cluster  
+* 🖥️ Innovator Cluster
+* 🖥️ Discovery Cluster
 
-You will learn:
-- How to connect using SSH  
-- Common mistakes (real examples)  
-- How to fix login issues  
+### You will learn:
+
+* How to connect using SSH
+* Common mistakes (real examples)
+* How to fix login issues
 
 ---
 
@@ -20,17 +19,18 @@ You will learn:
 
 Before starting, make sure you have:
 
-- ✅ USD account  
-- ✅ HPC access approved  
-- ✅ Internet connection  
-- ✅ SSH client installed  
+* ✅ USD account
+* ✅ HPC access approved
+* ✅ Internet connection
+* ✅ SSH client installed
 
-### SSH Clients:
-| OS | Tool |
-|----|------|
+### SSH Clients by OS
+
+| OS      | Tool                          |
+| ------- | ----------------------------- |
 | Windows | PowerShell / Git Bash / PuTTY |
-| Mac | Terminal |
-| Linux | Terminal |
+| Mac     | Terminal                      |
+| Linux   | Terminal                      |
 
 ---
 
@@ -38,98 +38,171 @@ Before starting, make sure you have:
 
 This is where most students make mistakes.
 
-### ✅ Correct Format:
+### ✅ Correct Format
 
+```
 yourusername@usd.local@cluster-address
+```
 
+### Example
 
-### Example:
+```
 santosh.luitel@usd.local@innovator.sdstate.edu
+```
 
+> ⚠️ Note: The username includes `@usd.local`, so be careful while typing.
 
 ---
 
 ## 💻 4. SSH Login Commands
 
-### 🔹 Innovator
+### 🔹 Innovator Cluster
+
 ```bash
-ssh yourusername@usd.local@innovator.sdstate.edu
-then enter your usd password
+ssh "yourusername@usd.local"@innovator.sdstate.edu
+```
 
-### 🔹 Discovery
+### 🔹 Discovery Cluster
 
-ssh yourusername@usd.local@discovery.sdstate.edu
-then enter your usd password
+```bash
+ssh "yourusername@usd.local"@discovery.sdstate.edu
+```
 
-### 5. first time login
-you may see
+👉 Then enter your USD password
+
+---
+
+## 🔐 5. First-Time Login
+
+You may see:
+
+```
 Are you sure you want to continue connecting (yes/no)?
-type
+```
+
+Type:
+
+```
 yes
+```
 
+---
 
-## 6. REAL ERRORS (From Students) + FIXES
+## ❌ 6. Common Errors & Fixes
+
+### ❌ Error 1: Hostname Issue
+
+```bash
 ssh santosh.luitel@usd.local
-Error1: Could not resolve hostname usd.local
+```
 
-fix: ssh santosh.luitel@usd.local@innovator.sdstate.edu
+**Error:**
 
-Error2: Connection Refused
-ssh santosh.luitel@usd.local@discovery.sdstate.edu
-❌ Error: connection to host discovery.sdstate.edu port 22: Connection refused
+```
+Could not resolve hostname usd.local
+```
 
-🔍 Possible Causes:
-Cluster temporarily down
-Network restriction
-Firewall issue
-✅ Fix:
-Try again later
-Check with HPC support
+✅ **Fix:**
 
-🔴 Error 3: Permission Denied
+```bash
+ssh "santosh.luitel@usd.local"@innovator.sdstate.edu
+```
+
+---
+
+### ❌ Error 2: Connection Refused
+
+```bash
+ssh "yourusername@usd.local"@discovery.sdstate.edu
+```
+
+**Error:**
+
+```
+connection refused (port 22)
+```
+
+🔍 **Possible Causes:**
+
+* Cluster temporarily down
+* Network restriction
+* Firewall issue
+
+✅ **Fix:**
+
+* Try again later
+* Check with HPC support
+
+---
+
+### ❌ Error 3: Permission Denied
+
+```
 Permission denied, please try again.
+```
 
-🧠 7. Why "Permission Denied" Happens
+---
 
-Based on real case:
+## 🧠 7. Why "Permission Denied" Happens
 
-Causes:
-❌ Wrong password
-❌ Wrong username format
-🚫 IP address blocked (MOST COMMON)
-🚫 8. IP Address Blocking (VERY IMPORTANT)
+### Common Causes:
 
-If you enter the wrong password 3 times, your IP gets blocked.
+* ❌ Wrong password
+* ❌ Wrong username format
+* 🚫 IP address blocked (**MOST COMMON**)
 
-🔍 Symptoms:
-SSH login fails
-Browser login works
-🌐 9. Verify Using Browser
+---
+
+## 🚫 8. IP Address Blocking (VERY IMPORTANT)
+
+If you enter the wrong password **3 times**, your IP may get blocked.
+
+### 🔍 Symptoms:
+
+* SSH login ❌ fails
+* Browser login ✅ works
+
+---
+
+## 🌐 9. Verify Using Browser
 
 Try logging in here:
 
-Innovator → https://ondemand.sdstate.edu
-Discovery → https://mydiscovery.sdstate.edu
-If browser works:
+* Innovator → https://ondemand.sdstate.edu
+* Discovery → https://mydiscovery.sdstate.edu
 
-👉 Your credentials are correct
-👉 Your IP is likely blocked
+### If browser login works:
 
-🛠️ 10. How to Fix IP Blocking
-Step 1: Find Your IP
+* ✅ Your credentials are correct
+* 🚨 Your IP is likely blocked
+
+---
+
+## 🛠️ 10. How to Fix IP Blocking
+
+### Step 1: Find Your IP
 
 Go to:
+
 👉 https://www.whatismyipaddress.com
 
 Example:
 
+```
 IPv4: 96.3.185.178
-Step 2: Email HPC Support
+```
 
-📧 SDSU.HPC@sdstate.edu
+---
 
+### Step 2: Email HPC Support
 
-📩 Example Email
+📧 [SDSU.HPC@sdstate.edu](mailto:SDSU.HPC@sdstate.edu)
+
+---
+
+### 📩 Example Email
+
+```
 Subject: SSH Login Issue (IP Blocked)
 
 Dear HPC Team,
@@ -146,41 +219,53 @@ Details:
 Please unblock my IP.
 
 Thank you.
+```
 
-💡 11. Real Case Summary
+---
+
+## 💡 11. Real Case Summary
 
 A student experienced:
 
-SSH login failed
-Browser login worked
-Issue → IP blocked
-Solution → HPC team unblocked IP
+* SSH login failed
+* Browser login worked
+* Issue → IP blocked
 
-✅ SSH worked again
+✅ Solution: HPC team unblocked IP
+✅ Result: SSH worked again
 
-✅ 12. Best Practices
+---
 
-✔️ Always use correct username format
-✔️ Avoid multiple wrong password attempts
-✔️ Test login via browser first
-✔️ Contact support early
+## ✅ 12. Best Practices
 
-📞 13. Support
+* ✔️ Always use correct username format
+* ✔️ Avoid multiple wrong password attempts
+* ✔️ Test login via browser first
+* ✔️ Contact support early
 
-📧 SDSU HPC Support
-Email: SDSU.HPC@sdstate.edu
+---
 
+## 📞 13. Support
 
-📌 14. Quick Summary
-Step	Action
-1	Use correct SSH format
-2	Enter correct password
-3	Try browser login
-4	If SSH fails → check IP block
-5	Contact support
-🎯 Final Tip
+📧 **SDSU HPC Support**
+Email: [SDSU.HPC@sdstate.edu](mailto:SDSU.HPC@sdstate.edu)
 
-💬 90% of SSH issues = wrong format OR IP block
+---
 
-Be patient, and you’ll get connected quickly!
+## 📌 14. Quick Summary
 
+| Step | Action                        |
+| ---- | ----------------------------- |
+| 1    | Use correct SSH format        |
+| 2    | Enter correct password        |
+| 3    | Try browser login             |
+| 4    | If SSH fails → check IP block |
+| 5    | Contact support               |
+
+---
+
+## 🎯 Final Tip
+
+💬 **90% of SSH issues = wrong format OR IP block**
+
+Be patient, and you’ll get connected quickly 🚀
